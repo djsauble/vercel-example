@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -10,8 +11,17 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          User Guides
         </h1>
+        <ul>
+          <li>
+            <h2>
+              <Link href="/guides/daniel">
+                <a>🏃‍♂️ Daniel Sauble</a>
+              </Link>
+            </h2>
+          </li>
+        </ul>
 
         <p className="description">
           Get started by editing <code>pages/index.js</code>
@@ -97,10 +107,10 @@ export default function Home() {
           align-items: center;
         }
 
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
+        // a {
+        //   color: inherit;
+        //   text-decoration: none;
+        // }
 
         .title a {
           color: #0070f3;
