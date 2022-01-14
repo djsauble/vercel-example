@@ -1,13 +1,26 @@
-import { Paper, Box, TextField, Button } from "@mui/material";
+import {
+  Paper,
+  Box,
+  TextField,
+  IconButton,
+  Button,
+  Popover,
+} from "@mui/material";
 import { useState } from "react";
 import api from "../utils/api";
+import "emoji-mart/css/emoji-mart.css";
+import { Picker } from "emoji-mart";
 
 const UserInfo = (props) => {
-  // User passed in via props, needs to be updated when new user values are saved (setUser)
+  // User data passed in via props, needs to be updated when new values are saved (setUser)
   const { user, setUser, documentId } = props;
 
   // State controls the values of the inputs
   const [state, setState] = useState({});
+
+  // Annoying stuff to control the emoji picker
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
   const onSave = async () => {
     if (!user) {
@@ -26,27 +39,62 @@ const UserInfo = (props) => {
     }));
   };
 
+  const onEmojiPick = (event) => {
+    setState({ ...state, emoji: event.native });
+    setAnchorEl(null);
+  };
+
   return (
     <>
       {user?.name && (
         <Box sx={{ display: "flex", flexDirection: "column", mb: 2 }}>
+          <span style={{ fontSize: 100 }}>{user.emoji}</span>
           <h1>{user.name}'s Deets</h1>
           <span>My role is: {user.role}</span>
           <span>I am located here: {user.location}</span>
         </Box>
       )}
 
-      <Paper
-        elevation={2}
-        sx={{
-          p: 3,
-          display: "grid",
-          gridGap: 20,
-        }}
-      >
-        <TextField label="Name" name="name" onChange={handleChange} />
-        <TextField label="Role" name="role" onChange={handleChange} />
-        <TextField label="Location" name="location" onChange={handleChange} />
+      <Paper elevation={2} sx={{ p: 2 }}>
+        <IconButton
+          onClick={(event) => setAnchorEl(event.currentTarget)}
+          component="span"
+          sx={{ mb: 2 }}
+        >
+          {state.emoji || "😀"}
+        </IconButton>
+        <Popover
+          open={open}
+          anchorEl={anchorEl}
+          onClose={() => setAnchorEl(null)}
+        >
+          <Picker onSelect={onEmojiPick} />
+        </Popover>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <TextField
+            label="Name"
+            name="name"
+            onChange={handleChange}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            label="Role"
+            name="role"
+            onChange={handleChange}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            label="Location"
+            name="location"
+            onChange={handleChange}
+            sx={{ mb: 2 }}
+          />
+        </Box>
         <Button
           variant="contained"
           size="large"

@@ -7,13 +7,13 @@ export default function Guide() {
   const documentId = "danielthemaniel@yahoo.com";
   const [daniel, setDaniel] = useState({});
 
+  // On page load fetch any existing user data
   useEffect(async () => {
     setDaniel(await api.getUser(documentId));
   }, [setDaniel]);
 
   return (
     <Layout image="/images/spacex.jpg">
-
       {/* <p>🌎 Portland, Oregon, USA &middot; 🕑 <a href="https://time.is/Portland,_Oregon">Pacific Time</a></p> */}
 
       <UserInfo user={daniel} setUser={setDaniel} documentId={documentId} />
