@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@astrajs/collections": "^0.3.2",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.8",
