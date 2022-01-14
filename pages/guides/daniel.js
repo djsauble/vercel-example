@@ -4,6 +4,7 @@ import UserInfo from "../../components/UserInfo";
 import api from "../../utils/api";
 
 export default function Guide() {
+  // documentId is the id of the user data in the collection
   const documentId = "danielthemaniel@yahoo.com";
   const [daniel, setDaniel] = useState({});
 
