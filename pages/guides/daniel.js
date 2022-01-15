@@ -50,7 +50,7 @@ export default function Guide() {
       </ol>
 
       <p>
-        For everything else, Slack and 
+        For everything else, Slack and 
         <a href="mailto:daniel.sauble@datastax.com">email</a> are the best way
         to communicate with me. I’m zealous about using “do not disturb”, so
         don’t worry about bothering me when I’m off work or sleeping. I’m also
@@ -149,7 +149,7 @@ export default function Guide() {
 
       <p>
         I’m not a seniority-obsessed designer, and am generally of the opinion
-        that 
+        that 
         <a href="https://randsinrepose.com/archives/titles-are-toxic/">
           titles are toxic
         </a>
@@ -179,17 +179,17 @@ export default function Guide() {
           quality standards.
         </li>
         <li>
-          I can be a bit overconfident** and occasionally talk out of my ass.
+          I can be a bit overconfident** and occasionally talk out of my ass.
           Push back when something doesn’t sound right or lacks data.
         </li>
         <li>
-          I tend to overcommit and set my spam filters high as a result.** When
+          I tend to overcommit and set my spam filters high as a result.** When
           you have a time sensitive request, give me a timeline and
           justification so I can prioritize my workload to meet your timeline if
           possible.
         </li>
         <li>
-          I often try to do everything myself** because of all the hats I’ve
+          I often try to do everything myself** because of all the hats I’ve
           worn in my career. If you see me doing your job or not properly
           leveraging your expertise, call me out on that!
         </li>
