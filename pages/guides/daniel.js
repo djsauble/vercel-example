@@ -15,7 +15,6 @@ export default function Guide() {
 
   return (
     <Layout image="/images/spacex.jpg">
-      {/* <p>🌎 Portland, Oregon, USA &middot; 🕑 <a href="https://time.is/Portland,_Oregon">Pacific Time</a></p> */}
 
       <UserInfo user={daniel} setUser={setDaniel} documentId={documentId} />
 
