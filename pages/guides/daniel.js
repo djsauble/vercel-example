@@ -6,7 +6,15 @@ import api from "../../utils/api";
 export default function Guide() {
   // documentId is the id of the user data in the collection
   const documentId = "danielthemaniel@yahoo.com";
-  const [daniel, setDaniel] = useState({});
+
+  const defaultDaniel = {
+    emoji: "",
+    name: "",
+    role: "",
+    locaiton: "",
+  };
+
+  const [daniel, setDaniel] = useState(defaultDaniel);
 
   // On page load fetch any existing user data
   useEffect(async () => {
@@ -15,6 +23,11 @@ export default function Guide() {
 
   return (
     <Layout image="/images/spacex.jpg">
+      <p style={{ fontSize: 100 }}>{daniel.emoji}</p>
+
+      <p>{daniel.name}</p>
+      <p>{daniel.role}</p>
+      <p>{daniel.location}</p>
 
       <UserInfo user={daniel} setUser={setDaniel} documentId={documentId} />
 
@@ -49,7 +62,7 @@ export default function Guide() {
       </ol>
 
       <p>
-        For everything else, Slack and 
+        For everything else, Slack and
         <a href="mailto:daniel.sauble@datastax.com">email</a> are the best way
         to communicate with me. I’m zealous about using “do not disturb”, so
         don’t worry about bothering me when I’m off work or sleeping. I’m also
@@ -148,7 +161,7 @@ export default function Guide() {
 
       <p>
         I’m not a seniority-obsessed designer, and am generally of the opinion
-        that 
+        that
         <a href="https://randsinrepose.com/archives/titles-are-toxic/">
           titles are toxic
         </a>

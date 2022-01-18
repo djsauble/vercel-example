@@ -16,7 +16,7 @@ const UserInfo = (props) => {
   const { user, setUser, documentId } = props;
 
   // State controls the values of the inputs
-  const [state, setState] = useState({});
+  const [state, setState] = useState({ emoji: "😀" });
 
   // Annoying stuff to control the emoji picker
   const [anchorEl, setAnchorEl] = useState(null);
@@ -45,67 +45,56 @@ const UserInfo = (props) => {
   };
 
   return (
-    <>
-      {user?.name && (
-        <Box sx={{ display: "flex", flexDirection: "column", mb: 2 }}>
-          <span style={{ fontSize: 100 }}>{user.emoji}</span>
-          <h1>{user.name}'s Deets</h1>
-          <span>My role is: {user.role}</span>
-          <span>I am located here: {user.location}</span>
-        </Box>
-      )}
-
-      <Paper elevation={2} sx={{ p: 2 }}>
-        <IconButton
-          onClick={(event) => setAnchorEl(event.currentTarget)}
-          component="span"
+    <Paper elevation={2} sx={{ p: 2 }}>
+      <IconButton
+        onClick={(event) => setAnchorEl(event.currentTarget)}
+        component="span"
+        sx={{ mb: 2 }}
+      >
+        {state.emoji}
+      </IconButton>
+      <Popover
+        open={open}
+        anchorEl={anchorEl}
+        onClose={() => setAnchorEl(null)}
+      >
+        <Picker onSelect={onEmojiPick} />
+      </Popover>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <TextField
+          label="Name"
+          name="name"
+          onChange={handleChange}
           sx={{ mb: 2 }}
-        >
-          {state.emoji || "😀"}
-        </IconButton>
-        <Popover
-          open={open}
-          anchorEl={anchorEl}
-          onClose={() => setAnchorEl(null)}
-        >
-          <Picker onSelect={onEmojiPick} />
-        </Popover>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <TextField
-            label="Name"
-            name="name"
-            onChange={handleChange}
-            sx={{ mb: 2 }}
-          />
-          <TextField
-            label="Role"
-            name="role"
-            onChange={handleChange}
-            sx={{ mb: 2 }}
-          />
-          <TextField
-            label="Location"
-            name="location"
-            onChange={handleChange}
-            sx={{ mb: 2 }}
-          />
-        </Box>
-        <Button
-          variant="contained"
-          size="large"
-          fullWidth
-          onClick={onSave}
-          disabled={!state.name || !state.role || !state.location}
-        >
-          Save
-        </Button>
-      </Paper>
-    </>
+        />
+        <TextField
+          label="Role"
+          name="role"
+          onChange={handleChange}
+          sx={{ mb: 2 }}
+        />
+        <TextField
+          label="Location"
+          name="location"
+          onChange={handleChange}
+          sx={{ mb: 2 }}
+        />
+      </Box>
+      <Button
+        variant="contained"
+        size="large"
+        fullWidth
+        onClick={onSave}
+        disabled={!state.name || !state.role || !state.location}
+      >
+        Save
+      </Button>
+    </Paper>
   );
 };
 
