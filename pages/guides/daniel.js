@@ -1,11 +1,35 @@
-import Layout from '../../components/layout';
+import { useEffect, useState } from "react";
+import Layout from "../../components/layout";
+import UserInfo from "../../components/UserInfo";
+import api from "../../utils/api";
 
 export default function Guide() {
+  // documentId is the id of the user data in the collection
+  const documentId = "danielthemaniel@yahoo.com";
+
+  const defaultDaniel = {
+    emoji: "",
+    name: "",
+    role: "",
+    locaiton: "",
+  };
+
+  const [daniel, setDaniel] = useState(defaultDaniel);
+
+  // On page load fetch any existing user data
+  useEffect(async () => {
+    setDaniel(await api.getUser(documentId));
+  }, [setDaniel]);
+
   return (
     <Layout image="/images/spacex.jpg">
-      <h1>Daniel's Deets</h1>
+      <p style={{ fontSize: 100 }}>{daniel.emoji}</p>
 
-      <p>🌎 Portland, Oregon, USA &middot; 🕑 <a href="https://time.is/Portland,_Oregon">Pacific Time</a></p>
+      <p>{daniel.name}</p>
+      <p>{daniel.role}</p>
+      <p>{daniel.location}</p>
+
+      <UserInfo user={daniel} setUser={setDaniel} documentId={documentId} />
 
       <p>
         <em>
@@ -38,7 +62,7 @@ export default function Guide() {
       </ol>
 
       <p>
-        For everything else, Slack and 
+        For everything else, Slack and
         <a href="mailto:daniel.sauble@datastax.com">email</a> are the best way
         to communicate with me. I’m zealous about using “do not disturb”, so
         don’t worry about bothering me when I’m off work or sleeping. I’m also
@@ -137,7 +161,7 @@ export default function Guide() {
 
       <p>
         I’m not a seniority-obsessed designer, and am generally of the opinion
-        that 
+        that
         <a href="https://randsinrepose.com/archives/titles-are-toxic/">
           titles are toxic
         </a>
