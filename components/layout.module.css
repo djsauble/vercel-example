@@ -4,3 +4,13 @@
   background-size: cover;
   background-position: center;
 }
+
+.App {
+  text-align: left;
+  margin: 5% auto;
+  width: 50%;
+}
+
+.App-link {
+  color: #DB544C;
+}

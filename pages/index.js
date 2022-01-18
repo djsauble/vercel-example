@@ -13,11 +13,13 @@ export default function Home() {
         <h1 className="title">
           XD Team: User Guides
         </h1>
-        <h2>
-          <Link href="/guides/daniel">
-            <a>🏃‍♂️ Daniel Sauble</a>
-          </Link>
-        </h2>
+        <ul>
+          <li><Link href="/guides/daniel"><a>Daniel</a></Link></li>
+          <li><Link href="/guides/ash"><a>Ash</a></Link></li>  
+          <li><Link href="/guides/jonathan"><a>Jonathan</a></Link></li>  
+          <li><Link href="/guides/lazerguide"><a>Lazer</a></Link></li>  
+          <li><Link href="/guides/meera"><a>Meera</a></Link></li>      
+        </ul>
       </main>
     </div>
   )
