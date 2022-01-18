@@ -1,10 +1,13 @@
 import { Container } from '@mui/material';
 import Link from 'next/link';
 import styles from './layout.module.css';
+//import callme from './callme.svg';
+//import './App.css';
+// import 'animate.css';
 
 export default function Layout({ children, image }) {
     return <div className="container">
-      <div className={styles.header} style={{backgroundImage: `url("${image}")`}}></div>
+      { image && ( <div className={styles.header} style={{backgroundImage: `url("${image}")`}}></div> )}
       <h2>
         <Link href="/">
           <a>&lt; Back home</a>
