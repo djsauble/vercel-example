@@ -18,7 +18,7 @@ const UserInfo = (props) => {
   // State controls the values of the inputs
   const [state, setState] = useState({ emoji: "😀" });
 
-  // Annoying stuff to control the emoji picker
+  // Annoying stuff to control the popper for emoji picker
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
