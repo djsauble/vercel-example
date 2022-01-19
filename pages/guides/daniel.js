@@ -5,13 +5,13 @@ import api from "../../utils/api";
 
 export default function Guide() {
   // documentId is the id of the user data in the collection
-  const documentId = "danielthemaniel@yahoo.com";
+  const documentId = "daniel.sauble@datastax.com";
 
   const defaultDaniel = {
-    emoji: "",
-    name: "",
-    role: "",
-    locaiton: "",
+    emoji: "🚀",
+    name: "Daniel",
+    role: "Product Designer",
+    location: "Portland, Oregon, USA",
   };
 
   const [daniel, setDaniel] = useState(defaultDaniel);
@@ -24,7 +24,6 @@ export default function Guide() {
   return (
     <Layout image="/images/spacex.jpg">
       <p style={{ fontSize: 100 }}>{daniel.emoji}</p>
-
       <p>{daniel.name}</p>
       <p>{daniel.role}</p>
       <p>{daniel.location}</p>
