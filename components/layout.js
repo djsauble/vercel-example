@@ -1,9 +1,7 @@
 import { Container } from '@mui/material';
 import Link from 'next/link';
 import styles from './layout.module.css';
-//import callme from './callme.svg';
 //import './App.css';
-// import 'animate.css';
 
 export default function Layout({ children, image }) {
     return <div className="container">

@@ -1,21 +1,41 @@
-//import callme from './callme.svg';
 //import './App.css';
-//import 'animate.css';
 import Image from 'next/image'
 import Layout from '../../components/layout';
+import UserInfo from "../../components/UserInfo"
+import { useEffect, useState } from "react";
+import api from "../../utils/api";
 
 function App() {
+  const [jo, setJo] = useState({
+  emoji: "🤙",
+  name: "Jo",
+  location: "Minnesota, USA",
+  role: "Product Design (Helios)",
+  time: "Central Time",
+  });
+
+  // documentId is the id of the user data in the collection
+  const documentId = "jonathan.kurten@datastax.com";
+
+  // On page load fetch any existing user data
+  useEffect(async () => {
+    setJo(await api.getUser(documentId));
+  }, [setJo]);  
+
   return (
-    <Layout image="/images/spacex.jpg">
+    <Layout>
     <div className="App"> 
-    <Image src="/images/callme.svg" alt="me" width="80" height="80" />
-     {/* //<img src={callme} class="animate__animated animate__tada animate__delay-0.5s" height="80px" alt="Call me emoji"/> */}
+
+    <UserInfo user={jo} setUser={setJo}/>
+
       <header>
-        <h1>Howzit, I'm Jonathan!</h1>
+      <h1>{jo.emoji}</h1>
+        <h1>Howzit, I'm Jonathan</h1>
         <ul>
-          <li>Product Design (Helios) 📚</li>
-          <li>Minnesota, USA 🇺🇸</li>
-          <li><a href="https://time.is/CT">Central Time</a> 🕑</li>
+          <li>Call me {jo.name}</li>
+          <li>{jo.role} 📚</li>
+          <li>{jo.location} 🗺️</li>
+          <li>{jo.time} 🕑</li>
         </ul>
       </header>
       <article>
