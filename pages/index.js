@@ -38,6 +38,11 @@ export default function Home() {
             </Link>
           </li>
           <li>
+            <Link href="/guides/jessica">
+              <a>Jessica</a>
+            </Link>
+          </li>
+          <li>
             <Link href="/guides/cole">
               <a>Cole</a>
             </Link>
