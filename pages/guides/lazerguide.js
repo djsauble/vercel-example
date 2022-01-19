@@ -10,12 +10,23 @@ import {
 } from "@mui/material";
 // import { getUser, createUser, updateUser } from "./api";
 import Layout from '../../components/layout';
+import UserInfo from "../../components/UserInfo";
+import api from "../../utils/api";
 
+function Guide() {
 
-function App() {
+  const documentId = "simonfraserduncan@gmail.com";
 
-   
-  const [user, setUser] = useState();
+  const [simon, setSimon] = useState({
+    emoji: '🎹',
+    name: 'Simon',
+    location: 'Madison, WI',
+    role: 'rectangle artist'
+  });
+
+  useEffect(async () => {
+    setSimon(await api.getUser(documentId));
+  }, [setSimon]);
 
 //   useEffect(async () => {
 //     setUser(await getUser());
@@ -31,6 +42,13 @@ function App() {
 
   return (
     <Layout>
+      <p>{simon.emoji}</p>
+      <p>{simon.name}</p>
+      <p>{simon.location}</p>
+      <p>{simon.role}</p>
+
+      <UserInfo user={simon} setUser={setSimon} documentId={documentId} />
+
     <section className="App">
 
       <header className="App-header">
@@ -43,42 +61,7 @@ function App() {
         <div className="metadata">
 
       
-        {user && (
-          <Box sx={{ display: "flex", flexDirection: "column", mb: 2 }}>
-            <span style={{ fontSize: 100 }}>🎹</span>
-            <h2>Hello! I'm {user.name}</h2>
-            <span>I'm a {user.role}</span>
-            <span>I live in {user.location}</span>
-          </Box>
-       )}
-        <Paper
-          elevation={3}
-          sx={{
-            p: 3,
-            display: "grid",
-            gridGap: 20,
-          }}
-        >
-          <TextField
-            label="Name"
-            onChange={(e) => setUser({ ...user, name: e.target.value })}
-          />
-
-          <TextField
-            label="Role"
-            onChange={(e) => setUser({ ...user, role: e.target.value })}
-          />
-
-          <TextField
-            label="Location"
-            onChange={(e) => setUser({ ...user, location: e.target.value })}
-          />
-
-          <Button variant="contained" size="large" fullWidth>
-            Save
-          </Button>
-        </Paper>
-
+  
 
           {/* <ListItemButton component="a" href="">
             <ListItemText primary="Product Design (Adoption &amp; Growth"/>
@@ -210,5 +193,5 @@ function App() {
 
 
 
-export default App;
+export default Guide;
 
