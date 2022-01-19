@@ -7,11 +7,11 @@ import api from "../../utils/api";
 
 function App() {
   const [jo, setJo] = useState({
-  emoji: "🤙",
-  name: "Jo",
-  location: "Minnesota, USA",
-  role: "Product Design (Helios)",
-  time: "Central Time",
+  emoji: "",
+  name: "",
+  location: "",
+  role: "",
+  time: "",
   });
 
   // documentId is the id of the user data in the collection
@@ -29,8 +29,8 @@ function App() {
     <UserInfo user={jo} setUser={setJo}/>
 
       <header>
-      <h1>{jo.emoji}</h1>
-        <h1>Howzit, I'm Jonathan</h1>
+      <p style={{ fontSize: 100 }}>{jo.emoji}</p>
+      <h1>Howzit, I'm Jonathan</h1>
         <ul>
           <li>Call me {jo.name}</li>
           <li>{jo.role} 📚</li>
