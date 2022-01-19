@@ -23,11 +23,12 @@ const UserInfo = (props) => {
   const open = Boolean(anchorEl);
 
   const onSave = async () => {
-    if (!user) {
-      await api.createUser(documentId, state);
-    } else {
-      await api.updateUser(documentId, state);
-    }
+    await api.createUser(documentId, state);
+    // if (!user) {
+    //   await api.createUser(documentId, state);
+    // } else {
+    //   await api.updateUser(documentId, state);
+    // }
     setUser(state);
   };
 

@@ -2,9 +2,11 @@
 //import './App.css';
 //import 'animate.css';
 import Image from 'next/image'
+import { useState } from 'react';
 import Layout from '../../components/layout';
 
 function App() {
+  const [jo, setJo] = useState({})
   return (
     <Layout image="/images/spacex.jpg">
     <div className="App"> 
